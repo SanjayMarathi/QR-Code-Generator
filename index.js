@@ -13,6 +13,10 @@ inquirer
     const url = answer.url;
     var rq_svg = qr.image(url);
     rq_svg.pipe(fs.createWriteStream("qr_code.png"));
+    fs.writeFile("message.txt", url, (err) => {
+        if (err) throw err;
+        console.log("The file has been saved!");
+      });
   })
   .catch((error) => {
     if(error.isTtyError) {
